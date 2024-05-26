@@ -1,5 +1,3 @@
-import { SampleData } from '../types';
-
 export const sampleData = 
 {
     "data": {
