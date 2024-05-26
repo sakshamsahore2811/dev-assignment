@@ -1,5 +1,3 @@
-// src/types.ts
-
 export interface ActivityMeta {
   label: string;
   fillColor: string;
@@ -27,7 +25,7 @@ export interface AuthorWorklogRow {
   name: string;
   totalActivity: Activity[];
   dayWiseActivity: DayWiseActivity[];
-}
+ }
 
 export interface AuthorWorklog {
   activityMeta: ActivityMeta[];

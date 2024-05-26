@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState } from 'react';
 import ActivityChart from './components/ActivityChart';
 import ActivityTable from './components/ActivityTable';

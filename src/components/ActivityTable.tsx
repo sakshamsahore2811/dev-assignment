@@ -1,4 +1,3 @@
-// src/components/ActivityTable.tsx
 import React from 'react';
 import { AuthorWorklogRow } from '../types';
 
@@ -21,8 +20,8 @@ const ActivityTable: React.FC<ActivityTableProps> = ({ worklogRow }) => {
         <tbody>
           {worklogRow.totalActivity.map((activity, index) => (
             <tr key={index}>
-              <td className="py-2 px-4 border-b">{activity.name}</td>
-              <td className="py-2 px-4 border-b">{activity.value}</td>
+              <td className="py-2 text-center px-4 border-b">{activity.name}</td>
+              <td className="py-2 text-center px-4 border-b">{activity.value}</td>
             </tr>
           ))}
         </tbody>

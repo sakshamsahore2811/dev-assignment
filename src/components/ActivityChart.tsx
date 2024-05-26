@@ -1,4 +1,3 @@
-// src/components/ActivityChart.tsx
 import React from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar
@@ -42,8 +41,12 @@ const ActivityChart: React.FC<ActivityChartProps> = ({ worklogRow }) => {
   // Prepare data for the average PRs merged per day line chart
   const prMergedData = worklogRow.dayWiseActivity.map((day) => ({
     date: day.date,
-    prMerged: day.items.children.find(activity => activity.label === 'PR Merged')?.count || 0,
+    prMerged: parseInt(day.items.children.find(activity => activity.label === 'PR Merged')?.count || "0", 10),
   }));
+
+  // Calculate the average PRs merged per day
+  const totalPRsMerged = prMergedData.reduce((sum, entry) => sum + entry.prMerged, 0);
+  const averagePRsMerged = prMergedData.length ? (totalPRsMerged / prMergedData.length).toFixed(2) : 0;
 
   return (
     <div className="space-y-8">
@@ -70,6 +73,7 @@ const ActivityChart: React.FC<ActivityChartProps> = ({ worklogRow }) => {
         </div>
         <div className="flex-1 p-4 bg-white shadow rounded-lg">
           <h3 className="text-lg font-semibold mb-4">Average PRs Merged per Day</h3>
+          <p className="text-2xl font-bold mb-4">{averagePRsMerged}</p>
           <ResponsiveContainer width="100%" height={400}>
             <LineChart data={prMergedData}>
               <CartesianGrid strokeDasharray="3 3" />
